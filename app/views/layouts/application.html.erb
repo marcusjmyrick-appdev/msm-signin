@@ -17,7 +17,7 @@
   <body>
   <nav>
   <ul>
-    <% if session.fetch(:user_id) == nil %>
+    <% if @current_user == nil %>
     <li>
         <a href="/user_sign_up">Sign up</a>
     </li>
@@ -25,10 +25,16 @@
         <a href="/user_sign_in">Sign in</a>
     </li>
     <% else %>
+     <li>
+        <a href="/bookmarks"><%= @current_user.first_name %>'s bookmarks</a>
+    </li>
     <li>
         <a href="/user_sign_in">Sign out</a>
     </li>
     <% end %>
+     <li>
+        <a href="/">Home</a>
+    </li>
   </ul>
   </nav>
   <p style = "color: green" > <%= notice %> </p>
